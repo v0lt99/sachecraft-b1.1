@@ -20,7 +20,7 @@
 			"use strict";
 			window.addEventListener("load", () => {
 				if(document.location.href.startsWith("file:")) {
-					alert("do not open this as a file open it with https and while you're at it sub to [Volt too](youtube.com/@Voltx90) ");
+					alert("do not open this as a file open it with https and while you're at it sub to my channel at Volt too ");
 				}else {
 					const relayId = Math.floor(Math.random() * 3);
 					window.sachecraftXOpts = {
