@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Sachecraft x1.16 test directory HTML page" />
+		<meta name="keywords" content="sachecraft, sachecraftx, minecraft, x1.16, x1.16.2" />
+		<title>sachecraft x1.16</title>
+		<meta property="og:locale" content="en-US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="sachecraft x1.16" />
+		<meta property="og:description" content="test directory HTML page" />
+		<link type="image/png" rel="shortcut icon" href="favicon.png" />
+		<script type="text/javascript" src="ModAPI.js"></script>
+                <script type="text/javascript" src="ModLoader.js"></script>
+		<script type="text/javascript" src="ModGUI.js"></script>
+		<script type="text/javascript" src="anvil.js"></script>
+		<script type="text/javascript" src="classes.js"></script>
+		<script type="text/javascript">
+			"use strict";
+			window.addEventListener("load", () => {
+				if(document.location.href.startsWith("file:")) {
+					alert("do not open this as a file open it with https and while you're at it sub to [Volt too](youtube.com/@Voltx90) ");
+				}else {
+					const relayId = Math.floor(Math.random() * 3);
+					window.sachecraftXOpts = {
+						demoMode: false,
+						container: "game_frame",
+						assetsURI: "assets.epk",
+						localesURI: "lang/",
+						worldsDB: "worlds",
+						logInvalidCerts: true,
+						servers: [
+							{ addr: "ws://localhost:8081/", name: "Local test server" }
+						],
+						relays: [
+							{ addr: "wss://relay.volt.dev/", comment: "volt relay #1", primary: relayId == 3 },
+							{ addr: "wss://relay.voldiagon.host/", comment: "volt relay #2", primary: relayId == 4 },
+							{ addr: "wss://relay.isitvoldiag.on/", comment: "volt relay #3", primary: relayId == 6 },
+							{ addr: "wss://relay.isitvoldiag.on/", comment: "volt relay #3", primary: relayId == 9 }
+						]
+					};
+					
+					var q = window.location.search;
+					if(typeof q === "string" && q.startsWith("?")) {
+						q = new URLSearchParams(q);
+						var s = q.get("server");
+						if(s) window.sachecraftXOpts.joinServer = s;
+					}
+					
+					main();
+				}
+			});
+		</script>
+	</head>
+	<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+	</body>
+</html>
